@@ -1,0 +1,81 @@
+body {
+  padding-top: 5rem;
+}
+
+.starter-template {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+img.center{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.btn-oj, .btn-oj:visited {
+    background-color: #FB9100;
+    color: white;
+}
+.btn-oj:hover, .btn-oj:active {
+    background-color: #EC5A00;
+    color: white;
+}
+.btn-oj:
+#deck{
+    text-align:center;
+}
+.btn:focus,.btn:active {
+   outline: none !important;
+   box-shadow: none;
+}
+@media screen and (min-width: 1024px) {
+    .cardsHeight{
+        height:470px;
+        overflow-y:auto;
+    }
+}
+.ojcard {
+    display:inline-block
+}
+.ojdeck {
+    display:inline-block
+}
+.badge-trap {
+    background-color: mediumpurple;
+    color:white;
+}
+.badge-gift {
+    background-color: hotpink;
+    color:white;
+}
+.badge-battle {
+    background-color: gold;
+    color:white;
+}
+.oj1 {
+    color: #FE8605;
+}
+.oj2 {
+    color: #FEB50E
+}
+.oj3 {
+    color: #F55A00
+}
+.stat-text{
+    font-size: 14px;
+}
+.stat-label{
+    font-size: 12px;
+}
+.list-unstyled{
+    padding-left: 0;
+    list-style: none;
+}
+.ojdeck{
+    filter: brightness(75%);
+}
+.ojdeck:hover{
+    filter: brightness(100%);
+}
+#mainBody {
+  display: none;
+}

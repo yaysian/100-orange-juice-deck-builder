@@ -1,0 +1,93 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>100%OJDeckBuilder</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/oj.css" rel="stylesheet">
+  <style></style><style>@media print {#ghostery-purple-box {display:none !important}}</style>
+    </head>
+    <body data-gr-c-s-loaded="true">
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#"><span class="oj1">1</span><span class="oj2">0</span><span class="oj3">0</span><span class="oj1">%</span><span class="oj1">O</span><span class="oj2">J</span><span class="oj1">D</span><span class="oj2">e</span><span class="oj3">c</span><span class="oj1">k</span><span class="oj1">B</span><span class="oj2">u</span><span class="oj3">i</span><span class="oj1">l</span><span class="oj2">d</span><span class="oj3">e</span><span class="oj1">r</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a tabindex="0" class="nav-link" href="#" data-container="body" data-html="true" data-trigger="focus" data-toggle="popover" data-placement="bottom" data-content="v1 - Hello World.<br>Made with love by <a href='http://twitter.com/yaysian'>@Yaysian</a>.<br>Utilizing <a href='https://jquery.com/'>JQuery</a>, <a href='https://getbootstrap.com/'>Bootstrap</a>, <a href='https://fontawesome.com/'>Font Awesome</a>, <a href='https://github.com/nothnk/jquery-google-spreadsheet'>jQuery GoogleSpreadsheet</a>, and <a href='https://clipboardjs.com/'>clipboard.js</a>.">About<span class="sr-only">(current)</span></a>
+          </li>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" id="mainBody" class="container">
+    <h1 class="display-4" id="deck-name">Deck Name</h1>
+    <button type="button" id="edit" class="btn btn-oj">Edit</button>
+    <button type="button" id="export" class="btn btn-success" data-toggle="modal" data-target="#exportModal">Export <i class="fas fa-share-square"></i></button>    
+      <div class="starter-template">
+          <h3 id="deck-count" class="display-5">Deck (0/10)</h3>
+          <div id="deck" class="py-3">
+          </div>
+      </div>
+    <div class="row">
+    <div class="col-md-8">
+     <div id= "cards" class="py-3 cardsHeight">
+     </div>
+        </div>
+     <div id="stats" class="col-md-4 rounded bg-light">
+     <h3>Mouse over a card!</h3>
+    </div>
+    <!-- Modal -->
+<div class="modal fade" id="exportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Export Deck</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="input-group mb-3">
+      <input type="text" class="form-control" id="exportUrlInput" >
+      <div class="input-group-append">
+          <button class="btn btn-oj" id="copy" data-clipboard-target="#exportUrlInput" type="button" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Copied!">Copy</button>
+      </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    </main><!-- /.container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/vendor/jquery-min.js"><\/script>')</script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+    <script src="js/jquery.google.spreadsheet.js"></script>
+    <script src="js/oj.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
