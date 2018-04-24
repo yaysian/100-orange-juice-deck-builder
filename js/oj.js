@@ -54,6 +54,7 @@ $(document).ready(function() {
             deck = JSON.parse(url_deck);
             updateDeckCount();
             updateDeckName(url_deck_name);
+            updateMetadata(url_deck_name);
         }
         else {
             deck = [null, null, null, null, null, null, null, null, null, null]
@@ -86,6 +87,10 @@ $(document).ready(function() {
                 current_card.data("id", cards[i].id)
             }
     //FUNCTIONS
+    function updateMetadata(deck_name) {
+        $('title').text(deck_name+' - 100%OJDeckBuilder')
+        $('meta[property="og:title"]').attr('content', deck_name)
+    }
     function updateDeckName(deck_name) {
         var deck_name_div = $("#deck-name")
         console.log(deck_name_div)
