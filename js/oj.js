@@ -1,20 +1,20 @@
 $(document).ready(function() {
     //INITIALIZATION
     //GET CARD DATA FROM GOOGLE SHEETS
-    
+
     var cards = [];
     var deck = [];
-        
+
     getCardData().done(function() {
         console.log(cards)
-        console.log("Loading UI elements.")                       
+        console.log("Loading UI elements.")
         initPage();
         $("#mainBody").fadeIn();
     });
 
     function getCardData(){
         var dfrd = $.Deferred();
-        var url = "https://docs.google.com/spreadsheet/pub?key=1ctvN49-tM-WhsBD0tbzHubiL1bXTDjYYRnnzuRS0baY&output=html";
+        var url = "https://docs.google.com/spreadsheet/pub?key=1x2rE0yK_Bn9bVOshuDrUPtcXjP7rLgMF-48pCHkwcJw&output=html";
         var googleSpreadsheet = new GoogleSpreadsheet();
         googleSpreadsheet.url(url);
         googleSpreadsheet.load(function(result) {
@@ -59,7 +59,7 @@ $(document).ready(function() {
         else {
             deck = [null, null, null, null, null, null, null, null, null, null]
         }
-            
+
         var deck_div = $("#deck")
         for (var i = 0; i < 10; i++) {
             if (deck[i] == null){
@@ -196,7 +196,7 @@ $(document).ready(function() {
         var first_num = findFirstNullInDeck();
         var first_available_card = $("#deck"+first_num);
         var deck_str = $("<img class=\"center\" src=\""+card_data.thumb+"\">");
-        
+
         if (!checkForLimit(card_data.limit, card_data.id)) {
         first_available_card.empty();
         first_available_card.append(deck_str);
@@ -239,6 +239,6 @@ $(document).ready(function() {
     });
     $('.popover-dismiss').popover({
         trigger: 'focus'
-    });   
+    });
 }
 });
