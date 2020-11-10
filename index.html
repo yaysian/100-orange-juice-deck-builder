@@ -43,7 +43,7 @@
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a tabindex="0" class="nav-link" href="#" data-container="body" data-html="true" data-trigger="focus" data-toggle="popover" data-placement="bottom" data-content="v3 - Added Pudding Pack<br><br>v2 - Added Community Pack 2. Full rewrite to support Co-Op Decks imminent!<br><br>v1 - Hello World.<br>Made with love by <a href='http://twitter.com/yaysian'>@Yaysian</a>.<br>Utilizing <a href='https://jquery.com/'>JQuery</a>, <a href='https://getbootstrap.com/'>Bootstrap</a>, <a href='https://fontawesome.com/'>Font Awesome</a>, <a href='https://github.com/nothnk/jquery-google-spreadsheet'>jQuery GoogleSpreadsheet</a>, and <a href='https://clipboardjs.com/'>clipboard.js</a>.">About<span class="sr-only">(current)</span></a>
+            <a tabindex="0" class="nav-link" href="#" data-container="body" data-html="true" data-trigger="focus" data-toggle="popover" data-placement="bottom" data-content="v4 - Added live search feature, filters and CO-OP support v3 - Added Pudding Pack<br><br>v2 - Added Community Pack 2. Full rewrite to support Co-Op Decks imminent!<br><br>v1 - Hello World.<br>Made with love by <a href='http://twitter.com/yaysian'>@Yaysian</a>.<br>Utilizing <a href='https://jquery.com/'>JQuery</a>, <a href='https://getbootstrap.com/'>Bootstrap</a>, <a href='https://fontawesome.com/'>Font Awesome</a>, <a href='https://github.com/nothnk/jquery-google-spreadsheet'>jQuery GoogleSpreadsheet</a>, and <a href='https://clipboardjs.com/'>clipboard.js</a>.">About<span class="sr-only">(current)</span></a>
           </li>
             </div>
           </li>
@@ -55,18 +55,34 @@
     <h1 class="display-4" id="deck-name">Deck Name</h1>
     <button type="button" id="edit" class="btn btn-oj">Edit</button>
     <button type="button" id="export" class="btn btn-success" data-toggle="modal" data-target="#exportModal">Export <i class="fas fa-share-square"></i></button>
-      <div class="starter-template">
-          <h3 id="deck-count" class="display-5">Deck (0/10)</h3>
-          <div id="deck" class="py-3">
-          </div>
-      </div>
+    <div class="starter-template">
+        <h3 id="deck-count" class="display-5">Deck (0/10)</h3>
+        <div id="deck" class="py-3">
+        </div>
+    </div>
+    <div class="row">
+      <input type="text" id="search" class="col-md-3 search orange-focus" name="search" placeholder="Search" value="">
+      <select id="filter" class="col-md-2 filter orange-focus" name="cars">
+        <option value="" selected>All</option>
+        <option value="boost">Boost</option>
+        <option value="battle">Battle</option>
+        <option value="event">Event</option>
+        <option value="trap">Trap</option>
+        <option value="gift">Gift</option>
+      </select>
+      <h5 class="co-op-label">Co-op</h5>
+      <label class="switch">
+        <input id="co-op" type="checkbox">
+        <span class="slider"></span>
+      </label>
+    </div>
     <div class="row">
     <div class="col-md-8">
-     <div id= "cards" class="py-3 cardsHeight">
-     </div>
-        </div>
+       <div id= "cards" class="py-3 cardsHeight">
+       </div>
+    </div>
      <div id="stats" class="col-md-4 rounded bg-light">
-     <h3>Mouse over a card!</h3>
+       <h3>Mouse over a card!</h3>
     </div>
     <!-- Modal -->
 <div class="modal fade" id="exportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

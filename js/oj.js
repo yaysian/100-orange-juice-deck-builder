@@ -5,6 +5,8 @@ $(document).ready(function() {
     var cards = [];
     var deck = [];
 
+    var co_op = false;
+
     getCardData().done(function() {
         console.log(cards)
         console.log("Loading UI elements.")
@@ -28,6 +30,7 @@ $(document).ready(function() {
                 cost: parseInt(current_object.cost),
                 limit: parseInt(current_object.limit),
                 rarity: parseInt(current_object.rarity),
+                points: parseInt(current_object.points),
                 desc: decodeURIComponent(current_object.desc),
                 flavor: decodeURIComponent(current_object.flavor),
                 thumb: current_object.thumb,
@@ -133,15 +136,48 @@ $(document).ready(function() {
         return result;
     };
     function updateDeckCount() {
-        count = 0;
+        var count = 0;
+        var score = 0;
         for(var i = 0; i < 10; i++) {
             if (deck[i] != null) {
                 count++;
+
+                score += cards.find(card => card.id == deck[i]).points
             }
         }
         console.log(deck)
         count_div = $("#deck-count");
-        count_div.text("Deck ("+count+"/10)")
+        if (co_op && score > 9) {
+            count_div.html("Deck ("+count+"/10)<img class=\"points\" src=\"images/numbers/points.png\"><img src=\"images/numbers/"+score.toString()[0]+".png\"><img class=\"second-number\" src=\"images/numbers/"+score.toString()[1]+".png\">")
+        }
+        else if (co_op) {
+            count_div.html("Deck ("+count+"/10)<img class=\"points\" src=\"images/numbers/points.png\"><img src=\"images/numbers/"+score+".png\">")
+        } else {
+            count_div.text("Deck ("+count+"/10)")
+        }
+    }
+    function filterCards() {
+      var search = $("#search").val();
+      var filter = $("#filter").val();
+      var cards_div = $("#cards");
+
+
+      cards_div.empty();
+      for (var i = 0; i < cards.length; i++) {
+          var requirements = (cards[i].name.toLowerCase().includes(search.toLowerCase()) || cards[i].desc.toLowerCase().includes(search.toLowerCase())) && cards[i].type.toLowerCase().includes(filter);
+
+          if (co_op) {
+            requirements = (cards[i].name.toLowerCase().includes(search.toLowerCase()) || cards[i].desc.toLowerCase().includes(search.toLowerCase())) && cards[i].type.toLowerCase().includes(filter) && (cards[i].points + 1);
+          }
+
+          if (requirements) {
+              var div_str = "<div class=\"ojcard\" id=\"card"+i+"\">"+"<img class=\"center\" src=\""+cards[i].thumb+"\"></div>";
+              cards_div.append(div_str);
+              var card_str = "#card" + i;
+              var current_card = $(card_str);
+              current_card.data("id", cards[i].id);
+          }
+      }
     }
     //LISTENERS
     $(document).on('click', "#edit", function() {
@@ -167,6 +203,7 @@ $(document).ready(function() {
             var type = card_data.type;
             var desc = card_data.desc;
             var image = card_data.image;
+            var points = card_data.points;
             var type_badge = ""
             switch(type){
                 case "Boost":
@@ -186,6 +223,11 @@ $(document).ready(function() {
                     break;
             }
             var stats_html = "<h3>"+name+" <span class=\"badge badge-"+type_badge+"\">"+type+"</span></h3><p>"+desc.replace("%20"," ")+"</p><div style=\"text-align:center\"><img class=\"center\" src=\""+image+"\"></div>";
+
+            if (co_op) {
+              stats_html = "<h3>"+name+" <span class=\"badge badge-"+type_badge+"\">"+type+"</span></h3><p>"+desc.replace("%20"," ")+"</p><div><img src=\"images/numbers/points.png\"><img src=\"images/numbers/"+points+".png\"></div><div style=\"text-align:center\"><img class=\"center\" src=\""+image+"\"></div>";
+            }
+
             stats_div.append(stats_html);
         }
     });
@@ -234,6 +276,32 @@ $(document).ready(function() {
         var complete_url = url+'?deck='+query_string;
         $("#exportUrlInput").val(complete_url)
     });
+    $("#search").on('input', function () {
+        filterCards();
+    })
+    $("#filter").on('input', function () {
+        filterCards();
+    })
+    $("#co-op").on('input', function () {
+        updateDeckCount();
+        co_op = !co_op;
+
+        for(var i = 0; i < 10; i++) {
+            if (deck[i] != null && !(cards.find(card => card.id == deck[i]).points + 1)) {
+              var deck_str = $("<img class=\"center\" src=\"images/card_mini.png\">");
+              var picked_deck = $(`#deck${i}`);
+
+              picked_deck.empty();
+              picked_deck.append(deck_str);
+              picked_deck.data("id",null)
+              deck[i] = null;
+              updateDeckCount();
+            }
+        }
+
+        filterCards();
+        updateDeckCount();
+    })
     $(function () {
         $('[data-toggle="popover"]').popover()
     });
